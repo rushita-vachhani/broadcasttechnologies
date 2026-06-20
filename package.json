@@ -1,0 +1,19 @@
+{
+  "name": "eventmanagement",
+  "version": "1.0.0",
+  "description": "Basic management app to learn.",
+  "keywords": [
+    "node",
+    "chai"
+  ],
+  "license": "ISC",
+  "author": "rush",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
