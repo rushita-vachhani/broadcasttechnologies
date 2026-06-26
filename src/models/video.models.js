@@ -13,7 +13,7 @@ const videoSchema = new Schema({
     duration: { type: Number, required: true},
     views: {type: Number, default: 0},
     isPublished: {type: Boolean, default: true},
-    owner: {type: Schema.types.ObjectId, ref:"User"},
+    owner: {type: Schema.Types.ObjectId, ref:"User"},
 },{timestamps: true});
 
 videoSchema.plugin(mongooseAggregatePaginate);

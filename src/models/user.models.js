@@ -1,6 +1,6 @@
 
 import mongoose, {Schema} from "mongoose";
-import { Video } from "./video.models";
+import { Video } from "./video.models.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
@@ -53,4 +53,5 @@ userSchema.methods.generateRefreshToken = function(){
         expiresIn: process.env.REFRESH_TOKEN_EXPIRY
     });
 };
+
 export const User = mongoose.model('User', userSchema);
