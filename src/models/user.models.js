@@ -18,14 +18,14 @@ const userSchema = new Schema({
         ref: "Video"
     }],
     password: {type: String, required: [true, "Password is required"]},
-    refreshToken: {type: String, required: true}
+    refreshToken: {type: String}
 
 }, {timestamps: true});
 
 userSchema.pre("save", async function(next) {
-    if (!this.isModified("password")) return next();
+    if (!this.isModified("password")) return next;
     this.password = await bcrypt.hash(this.password, 10);
-    next();
+    next;
 });
 
 userSchema.methods.comparePassword = async function(password) {
