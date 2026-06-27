@@ -21,4 +21,8 @@ router.route("/logout").post(
     verifyJWT,
     logoutUser);
 
+router.route("/refreshToken").post(
+    
+);
+
 export default router;

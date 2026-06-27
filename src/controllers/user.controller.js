@@ -32,6 +32,7 @@ const registerUser = asyncHandler(async (req, res) => {
     // return response
    
     const {fullName, username, email, password} = req.body;
+    
 
     if(
         [fullName, email, username, password].some((field) => { return !field?.trim() === ""})
@@ -94,9 +95,10 @@ const loginUser = asyncHandler(async (req, res) => {
     // send tokens in cookie
     // if not-correct then show error message
 
-    const {username, email, password} = res.body;
+    const {username, email, password} = req.body;
+    console.log(`username is:-------- ${!username}`);
 
-    if(!username || !email) {
+    if(!username && !email) {
         throw new ApiError(400, "Username or Email is required!")
     }
     if(!password) {
@@ -113,7 +115,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
     const isPasswordValid = await user.comparePassword(password);
     if (!isPasswordValid) {
-        throw new ApiError(401, "Password is incorrect! Invalida user credentials!!");
+        throw new ApiError(401, "Password is incorrect! Invalid user credentials!!");
     }
 
     const {accessToken, refreshToken} = await generateAccessAndRefreshTokens(user._id);        
@@ -175,4 +177,3 @@ const logoutUser = asyncHandler( async (req, res) => {
 export { registerUser, 
         loginUser,
         logoutUser };
-
