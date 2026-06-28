@@ -286,8 +286,8 @@ const updateUserAvatar = asyncHandler( async (req, res) => {
                                             ).select("-password");
 
    return res
-        .status()
-        .json();
+            .status(200)
+            .json(new ApiResponse(200, user, "User avatar updated successfully!!"));
 });
 
 export { registerUser, 
