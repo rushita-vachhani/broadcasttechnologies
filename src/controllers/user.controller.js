@@ -241,13 +241,12 @@ const getCurrentUser = asyncHandler(async (req, res) => {
 
 const updateAccountDetails = asyncHandler(async (req, res) => {
     const {email, fullName} = req.body;
-    console.log(`email and fullname is printing: ----- ${fullName}`);
 
     if(!email || !fullName){
         throw new ApiError(400, "No fields passed in request..");
     }
 
-    const user = User.findByIdAndUpdate(
+    const user = await User.findByIdAndUpdate(
                             req.user?._id,
                         {
                             $set: {
@@ -259,7 +258,7 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
                         }).select("-password");
     
     return res
-            .status()
+            .status(200)
             .json(new ApiResponse(200, user, "User data updated successfully!!"));
 })
 
