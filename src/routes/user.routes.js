@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { loginUser, logoutUser, refreshAccessToken, registerUser, updatePassword, getCurrentUser, updateAccountDetails} from "../controllers/user.controller.js";
+import { loginUser, logoutUser, refreshAccessToken, registerUser, updatePassword, getCurrentUser, updateAccountDetails, updateUserAvatar} from "../controllers/user.controller.js";
 import upload from "../middlewares/multer.middleware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
@@ -28,6 +28,8 @@ router.route("/updatePassword").post(verifyJWT, updatePassword);
 router.route("/getCurrentUser").get(verifyJWT, getCurrentUser);
 
 router.route("/updateUser").post(verifyJWT, updateAccountDetails);
+
+router.route("/updateUserAvatar").post(verifyJWT, updateUserAvatar);
 
 //http://localhost:3000/api/v1/users/login
 //http://localhost:3000/api/v1/users/logout
