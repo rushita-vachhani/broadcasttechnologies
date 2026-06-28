@@ -23,10 +23,11 @@ router.route("/logout").post(
 
 router.route("/refreshToken").post(refreshAccessToken);
 
-router.route("/updatePassword").post(updatePassword);
+router.route("/updatePassword").post(verifyJWT, updatePassword);
 
 //http://localhost:3000/api/v1/users/login
 //http://localhost:3000/api/v1/users/logout
 //http://localhost:3000/api/v1/users/register
 //http://localhost:3000/api/v1/users/refreshToken
+//http://localhost:3000/api/v1/users/updatePassword
 export default router;
