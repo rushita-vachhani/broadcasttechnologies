@@ -40,4 +40,7 @@ router.route("/getWatchHistory").get(verifyJWT, getWatchHistory);
 //http://localhost:3000/api/v1/users/register
 //http://localhost:3000/api/v1/users/refreshToken
 //http://localhost:3000/api/v1/users/updatePassword
+// http://localhost:3000/api/v1/users/updateUserAvatar
+// http://localhost:3000/api/v1/users/getWatchHistory
+// http://localhost:3000/api/v1/users/c/:username
 export default router;
